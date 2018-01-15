@@ -1,4 +1,0 @@
-sceneSetups:
-- path: Assets/specular highlights.unity
-  isLoaded: 1
-  isActive: 1
