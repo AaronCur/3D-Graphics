@@ -25,7 +25,7 @@ Shader "Cg shader using discard" {
 		vertexOutput output;
 
 		output.pos = UnityObjectToClipPos(input.vertex);
-		output.posInObjectCoords = input.vertex;
+		output.posInObjectCoords = mul(unity_ObjectToWorld, input.vertex);
 
 		return output;
 	}

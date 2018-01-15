@@ -17,7 +17,7 @@ Shader "Cg shader with two passes using discard" {
 	};
 	struct vertexOutput {
 		float4 pos : SV_POSITION;
-		float4 posInObjectCoords : TEXCOORD0;
+		float3 posInObjectCoords : TEXCOORD0;
 	};
 
 	vertexOutput vert(vertexInput input)
@@ -25,7 +25,7 @@ Shader "Cg shader with two passes using discard" {
 		vertexOutput output;
 
 		output.pos = UnityObjectToClipPos(input.vertex);
-		output.posInObjectCoords = input.vertex;
+		output.posInObjectCoords = mul(unity_ObjectToWorld, input.vertex);
 
 		return output;
 	}
@@ -56,7 +56,7 @@ Shader "Cg shader with two passes using discard" {
 	};
 	struct vertexOutput {
 		float4 pos : SV_POSITION;
-		float4 posInObjectCoords : TEXCOORD0;
+		float3 posInObjectCoords : TEXCOORD0;
 	};
 
 	vertexOutput vert(vertexInput input)
@@ -64,7 +64,7 @@ Shader "Cg shader with two passes using discard" {
 		vertexOutput output;
 
 		output.pos = UnityObjectToClipPos(input.vertex);
-		output.posInObjectCoords = input.vertex;
+		output.posInObjectCoords = mul(unity_ObjectToWorld, input.vertex);
 
 		return output;
 	}
