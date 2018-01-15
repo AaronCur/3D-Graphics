@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Diffuse_Reflections.unity
+- path: Assets/specular highlights.unity
   isLoaded: 1
   isActive: 1
