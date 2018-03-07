@@ -5,6 +5,8 @@ namespace UnityStandardAssets.Utility
 {
     public class WaypointProgressTracker : MonoBehaviour
     {
+
+        private Rigidbody car;
         // This script can be used with any object that is supposed to follow a
         // route marked out by waypoints.
 
@@ -58,6 +60,9 @@ namespace UnityStandardAssets.Utility
 
             // You can manually create a transform and assign it to this component *and* the AI,
             // then this component will update it, and the AI can read it.
+
+            car = GetComponent<Rigidbody>();
+
             if (target == null)
             {
                 target = new GameObject(name + " Waypoint Target").transform;
@@ -79,9 +84,22 @@ namespace UnityStandardAssets.Utility
             }
         }
 
+        void FixedUpdate()
+        {
+            if (car.position.z >= 1000)
+            {
+                // Destroy(gameObject);
+                Reset();
+            }
+        }
 
         private void Update()
         {
+
+           // if (progressNum == 13)
+           // {
+              //  Reset();
+          //  }
             if (progressStyle == ProgressStyle.SmoothAlongRoute)
             {
                 // determine the position we should currently be aiming for
